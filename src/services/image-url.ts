@@ -1,7 +1,9 @@
+import noImage from "../assets/no-image-placeholder.webp";
+
 // we are going to cropp the image url for better performance
 const getCroppedImageUrl = (url: string) => {
-  if (!url) return "";
-  
+  if (!url) return noImage;
+
   const target = "media/";
   const index = url.indexOf(target) + target.length; // add the media too
   return url.slice(0, index) + "crop/600/400/" + url.slice(index);
