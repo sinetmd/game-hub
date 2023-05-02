@@ -2,8 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
-  results: T[];
   next: string | null;
+  results: T[];
 }
 
 const axiosInstance = axios.create({
@@ -26,5 +26,4 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 }
-
 export default APIClient;
