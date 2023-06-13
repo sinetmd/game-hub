@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Collapse, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
 }
 
 const ExpandableText = ({ children }: Props) => {
-  const [expanded, setExanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   // limit of 300 chars
   const limit = 300;
@@ -18,18 +18,21 @@ const ExpandableText = ({ children }: Props) => {
   const summary = expanded ? children : children.substring(0, limit) + "...";
 
   return (
-    <Text>
-      {summary}
+    <>
+      <Collapse startingHeight={75} in={expanded}>
+        {summary}
+      </Collapse>
       <Button
+        marginTop="10px"
         marginLeft={1}
-        onClick={() => setExanded(!expanded)}
+        onClick={() => setExpanded(!expanded)}
         size="xs"
         fontWeight="bold"
         colorScheme="yellow"
       >
         {expanded ? "Show Less" : "Read More"}
       </Button>
-    </Text>
+    </>
   );
 };
 
